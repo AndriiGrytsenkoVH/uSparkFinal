@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route} from 'react-router-dom'
+import Navbar from './Components/Navbar';
+import Uspark from './Components/Uspark';
+import Home from './Components/Home';
+import YourDevelopers from './Components/YourDevelopers';
 
 function App() {
+ 
+  //no user, show sign up button, have user, show logout button
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navbar />
+    <Routes>
+      <Route path = '/' element = {<Uspark />}/>
+      <Route path = '/home' element = {<Home />}/>
+      <Route path = '/developers' element = {<YourDevelopers />} />
+    </Routes>
+    </>
   );
 }
 
