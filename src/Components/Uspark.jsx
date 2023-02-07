@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode'
-import { client_id } from '../../secret'
+import { client_id } from '../Secret/secret'
 
 export default function Uspark() {
 

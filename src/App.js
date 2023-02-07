@@ -6,8 +6,6 @@ import YourDevelopers from './Components/YourDevelopers';
 
 function App() {
  
-  //no user, show sign up button, have user, show logout button
-
   return (
     <>
     <Navbar />

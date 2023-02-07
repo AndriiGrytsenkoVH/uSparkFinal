@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useRef, useState } from "react";
-import { client_id } from '../../secret';
+import { client_id } from '../Secret/secret'
 
 export default function Home() {
     const client = useRef(null);
