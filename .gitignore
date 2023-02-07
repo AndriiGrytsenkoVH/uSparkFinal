@@ -21,3 +21,17 @@ secret.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Flask ignore
+__pycache__
+# Virtual environment
+venv
+# Local environment variables
+.env
+# Local development database
+app.db
+
+test.py
+
+# When cloning, database will be initialized from scratch
+migrations
