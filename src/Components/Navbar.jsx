@@ -9,10 +9,10 @@ export default function Navbar(props) {
                     <Link className="navbar-brand" to ="/">
                         uSpark
                     </Link>
-             
                     <Link className="nav-link text-light" to="/developers">
                         Your Developers
                     </Link>
+
                 
                     <button
                         className="navbar-toggler"
