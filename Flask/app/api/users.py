@@ -1,6 +1,8 @@
 from flask import request, redirect, url_for
 from app.api import bp
 from app.models import User
+from app import db
+
 
 # GET user data by their id
 # id specified in url
@@ -25,6 +27,21 @@ def update_user(user_id):
     data = request.get_json() or {}
     user.from_dict(data)
     return user.to_dict(), 200
+
+# PUT (update) users subscriptions
+@bp.route('/users/<str:user_id>/subs', method=['PUT'])
+def update_users_subscriptions(user_id):
+    user = User.query.get_or_404(user_id)
+    data = request.get_json() or {}
+    # DELETE OLD
+    user.subscriptions = []
+    # ADD NEW
+    for item in data.items:
+        # TODO verify the item.snippet.resourceId.chanelId
+        # see if it works correctly
+        # it must be a chanel id
+        user.subscriptions.append(item.snippet.resourceId.chanelId)
+    db.session.commit()
 
 # POST new user
 # returns 400 if json body is wrong
