@@ -1,12 +1,14 @@
 from flask import request, redirect, url_for
-from app.api import bp
+# from app.api import bp
 from app.models import User
+from app import db
+from . import api
 
 # GET user data by their id
 # id specified in url
 # returns 404 if no user with this id is found
 # no json body required
-@bp.route('/users/<str:user_id>', methods=['GET'])
+@api.route('/users/<string:user_id>', methods=['GET'])
 def get_user(user_id):
     user = User.query.get_or_404(user_id)
     return user.to_dict(), 200
@@ -19,12 +21,27 @@ def get_user(user_id):
 #  first_name: --optional,
 #  lst_name: --optional,
 #  about_me: -- optional}
-@bp.route('/users/<str:user_id>', methods=['PUT'])
+@api.route('/users/<string:user_id>', methods=['PUT'])
 def update_user(user_id):
     user = User.query.get_or_404(user_id)
     data = request.get_json() or {}
     user.from_dict(data)
     return user.to_dict(), 200
+
+# PUT (update) users subscriptions
+@api.route('/users/<string:user_id>/subs', methods=['PUT'])
+def update_users_subscriptions(user_id):
+    user = User.query.get_or_404(user_id)
+    data = request.get_json() or {}
+    # DELETE OLD
+    user.subscriptions = []
+    # ADD NEW
+    for item in data.items:
+        # TODO verify the item.snippet.resourceId.chanelId
+        # see if it works correctly
+        # it must be a chanel id
+        user.subscriptions.append(item.snippet.resourceId.chanelId)
+    db.session.commit()
 
 # POST new user
 # returns 400 if json body is wrong
@@ -35,7 +52,7 @@ def update_user(user_id):
 #  lst_name: --optional,
 #  about_me: -- optional}
 # returns 201 if successful
-@bp.route('/users', methods=['POST'])
+@api.route('/users', methods=['POST'])
 def create_user():
      # Check to see that the request sent a request body that is JSON
     if not request.is_json:
@@ -55,6 +72,7 @@ def create_user():
     first_name = data.get('first_name')
     last_name =  data.get('last_name')
     about_me = data.get('about_me')
+ 
 
     # Query our user table to see if there are any users with either username or email from form
     check_user = User.query.filter( User.id == id ).first()
@@ -65,6 +83,7 @@ def create_user():
 
     # Create a new User instance with data from request
     new_user = User(id=id, username=username, first_name=first_name, last_name=last_name, about_me=about_me)
+    print('='*50)
     # Return the new post as a JSON response
     return new_user.to_dict(), 201
 

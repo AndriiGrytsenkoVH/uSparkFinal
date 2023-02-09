@@ -14,5 +14,5 @@ from app import routes
 
 from app import models
 
-from app.api import bp as api_bp
-app.register_blueprint(api_bp)
+from app.api import api
+app.register_blueprint(api)
