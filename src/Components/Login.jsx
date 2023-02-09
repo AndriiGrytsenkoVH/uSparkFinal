@@ -42,9 +42,9 @@ export default function Login(props) {
 
     return (
         <>
-            <h1 className = 'text-center mt-5'>Login Below</h1>
+            <h1 className = 'text-center mt-5'>Make it Happen</h1>
             <div className="App my-5">
-                <button className="d-block mx-auto btn btn-primary" onClick={getToken}>Log My Subscriptions</button>
+                <button className="d-block mx-auto btn btn-primary" onClick={getToken}>click me!</button>
             </div>
 
         </>

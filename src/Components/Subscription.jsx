@@ -50,12 +50,15 @@ export default function Subscription({accessToken}) {
         } 
     }, [accessToken]);
 
+    
+
     return (
         <>
-            <h1 className = 'text-center'>subscriptions</h1>
+            {users.map( user => <h2 className = 'text-center'> Welcome, {user.snippet.title}</h2> )}
+            <h4 className = 'text-center'>Here are your subscriptions</h4>
             {/* {subscriptions.map( sub => <h4>{ sub.snippet.title} { sub.snippet.description } </h4>)} */}
             {subscriptions.map(sub => <SubscriptionsCard key = {sub.snippet.id} sub = {sub}/>)}
-            {users.map( user => <h4> {user.snippet.title}</h4> )}
+           
         </>
     )
 }
