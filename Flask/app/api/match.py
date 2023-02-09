@@ -1,10 +1,11 @@
 from flask import request
-from app.api import bp
+# from app.api import bp
+from . import api
 from app.models import User, Subscription, user_subscriptions
 from app import db
 from sqlalchemy import func
 
-@bp.route('/match/<str:my_id>/<str:their_id>', methods=['GET'])
+@api.route('/match/<string:my_id>/<string:their_id>', methods=['GET'])
 def list_common_subscriptions(my_id, their_id):
 
     # TODO VERIFY !!!
