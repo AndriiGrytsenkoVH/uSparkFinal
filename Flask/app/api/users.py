@@ -13,6 +13,11 @@ def get_user(user_id):
     user = User.query.get_or_404(user_id)
     return user.to_dict(), 200
 
+@api.route('/users/<string:user_id>/subscriptions')
+def get_user_subscriptions(user_id):
+    user = User.query.filter(User.id == user_id).first()
+    return [x.to_dict() for x in user.subscriptions]
+
 # PUT (updates) user info by their id
 # id specified in url
 # returns 404 if no user with this id found
