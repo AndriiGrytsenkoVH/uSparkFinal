@@ -6,12 +6,15 @@ import Uspark from './Components/Uspark';
 import Login from './Components/Login';
 import YourDevelopers from './Components/YourDevelopers';
 import Subscription from "./Components/Subscription";
+import Match from "./Components/Match"
 
 function App(props) {
   const [message, setMessage] = useState(null);
   const [category, setCategory] = useState(null);
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') && (localStorage.getItem('tokenExp') !== ''));
   const [ accessToken, setAccessToken ] = useState(localStorage.getItem('token'));
+  const [ userId, setUserId ] = useState()
+
 
   function flashMessage(message, category){
     setMessage(message);
@@ -40,7 +43,8 @@ function App(props) {
         <Route path = '/' element = {<Uspark />}/>
         <Route path = '/login' element = {<Login flashMessage = {flashMessage} logUserIn={logUserIn}/>}/>
         <Route path = '/developers' element = {<YourDevelopers />} />
-        <Route path = '/subscriptions' element = {<Subscription accessToken = {accessToken} />} />
+        <Route path = '/subscriptions' element = {<Subscription accessToken = {accessToken} setUserId = {setUserId} />} />
+        <Route path = '/matches' element = {<Match userId={userId}/>}/>
     </Routes>
     </div>
     </>

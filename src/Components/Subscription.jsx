@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import SubscriptionsCard from './SubscriptionsCard';
 import "../Styles/Subscriptions.css"
 
-export default function Subscription({accessToken}) {
+export default function Subscription({accessToken, setUserId}) {
 
     const [ subscriptions, setSubscriptions ] = useState([]);
     const [ users, setUsers ] = useState([])
@@ -25,10 +25,10 @@ export default function Subscription({accessToken}) {
             fetch(
                 `https://www.googleapis.com/youtube/v3/channels?${urlApiUser}`, 
                 {headers: headers}
-            )
+                )
                 .then(res => res.json())
-                .then(data => console.log(data));
-                // .then(data => setUsers(data.items))
+                .then(data => setUserId(data.items[0].id))
+                .then(data => setUsers(data.items))
 
             let urlParamsSubs = {
                 mine: true,
@@ -55,7 +55,8 @@ export default function Subscription({accessToken}) {
 
     return (
         <>
-            {/* {users.map( user => <h2 className = 'text-center'> Welcome, {user.snippet.title}</h2> )} */}
+        
+            {users.map( user => <h2 className = 'text-center title my-3'> Welcome, {user.snippet.title}</h2> )}
             <h4 className = 'text-center title my-4'>Here are your subscriptions</h4>
             {/* {subscriptions.map( sub => <h4>{ sub.snippet.title} { sub.snippet.description } </h4>)} */}
             {subscriptions.map(sub => <SubscriptionsCard key = {sub.snippet.id} sub = {sub}/>)}

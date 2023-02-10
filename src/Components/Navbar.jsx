@@ -35,6 +35,11 @@ export default function Navbar(props) {
                                     Subscriptions
                                 </Link>
                             </li>
+                            <li className = "nav-item">
+                                <Link className = "nav-link" to="/matches">
+                                    Scores
+                                </Link>
+                            </li>
                             <li>
                                 <Link className="nav-link" to="/"  onClick={props.logUserOut}>
                                     Logout

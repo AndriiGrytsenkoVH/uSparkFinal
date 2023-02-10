@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useRef, useState } from "react";
 import { client_id } from '../Secret/secret'
 import { useNavigate } from 'react-router-dom';
+import "../Styles/Login.css"
 
 export default function Login(props) {
 
@@ -33,7 +34,6 @@ export default function Login(props) {
                 headers: headers,  
                 body: jsonToken
             })
-        .then(res => console.log(res.json()))
         navigate('/subscriptions')
     }
 
@@ -44,8 +44,6 @@ export default function Login(props) {
             scope: "https://www.googleapis.com/auth/youtube.readonly",
             callback: handleResponseCallback
         });
-        console.log(client)
-        console.log('hi')
     }, []);
 
    
@@ -57,9 +55,9 @@ export default function Login(props) {
 
     return (
         <>
-            <h1 className = 'text-center mt-5'>Make it Happen</h1>
+            <h1 className = 'text-center mt-5 title'>Make it Happen</h1>
             <div className="App my-5">
-                <button className="d-block mx-auto btn btn-primary" onClick={getToken}>click me!</button>
+                <button className="d-block mx-auto btn btn-primary magic" onClick={getToken}>click me!</button>
             </div>
 
         </>
