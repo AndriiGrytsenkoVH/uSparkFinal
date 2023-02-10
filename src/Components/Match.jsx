@@ -19,8 +19,8 @@ export default function Match(props) {
 
   return (
     <>
-    <h1>hi</h1>
-    <div className = 'something'>
+    <h1 className = 'title text-center mt-5'>Your Matches Below</h1>
+    <div className = 'container-fluid'>
       {scoresandusernames.map((item, index) => <MatchCard key = {index} score = {item.score} username = {item.user.username}/>)}
     </div>
     </>

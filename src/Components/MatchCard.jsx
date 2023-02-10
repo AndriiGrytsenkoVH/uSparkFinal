@@ -1,17 +1,16 @@
 import React from 'react'
+import '../Styles/MatchCard.css'
 
 export default function MatchCard(props) {
   return (
-    <div>
-        <>
-        <div className="card">
-            <div className="card-body">
-                <h5 className="card-title">{ props.score }</h5>
-                <p className="card-text">{ props.username }</p>
-            </div>
+      <>
+    {/* <div className ='format'> */}
+        <div className="card d-inline-flex">
+             <h1 className="card-title bigtext">{ props.score }</h1>
+            <p className="card-text">{ props.username }</p>
         </div>
+    {/* </div> */}
         </>
 
-    </div>
   )
 }
