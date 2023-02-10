@@ -109,6 +109,8 @@ def login():
             channel_data = channel_dict(item)
             new_subscription = update_subscription_table(channel_data)
             current_user.subscriptions.append(new_subscription)
+            db.session.commit()
+            print(f'APPENDED {new_subscription.chanel_name}')
 
         nextPageToken = channel_response.json().get('nextPageToken')
         
