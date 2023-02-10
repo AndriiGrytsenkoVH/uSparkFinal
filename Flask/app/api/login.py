@@ -34,12 +34,14 @@ def update_user_table(user_data):
     if check_user:
         check_user.from_dict(user_data)
         print({ 'success': f'Updated User {user_data["username"]}'})
+        return check_user
     else:
         new_user = User(**user_data)
         print({
             'success': f'Created new User',
             'User': new_user.to_dict()
             })
+        return new_user
 
 def youtube_api_channel_list_call(token, nexPageToken):
     headers = { 'Authorization': f'Bearer {token}'}
@@ -116,7 +118,7 @@ def login():
         
     
 
-    return { 'success': 'login works!!!'}, 200
+    return current_user.to_dict(), 200
 
 
     # try creating new user in db
