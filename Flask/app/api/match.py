@@ -32,3 +32,8 @@ def scores(user_id):
         }
         result.append(entrie)
     return sorted(result, key=lambda x: x['score'], reverse=True)
+
+@api.route('/match/<string:my_id>/<string:their_id>', methods=['GET'])
+def get_common_channels(my_id, their_id):
+    subscriptions_list =  common_subscriptions_query(my_id, their_id).all()
+    return [x.to_dict() for x in subscriptions_list]
