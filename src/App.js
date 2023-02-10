@@ -41,7 +41,7 @@ function App(props) {
       {message ? <AlertMessage message={message} category={category} flashMessage={flashMessage} /> : null}
       <Routes>
         <Route path = '/' element = {<Uspark />}/>
-        <Route path = '/login' element = {<Login flashMessage = {flashMessage} logUserIn={logUserIn}/>}/>
+        <Route path = '/login' element = {<Login flashMessage = {flashMessage} logUserIn={logUserIn} setUserId = {setUserId} />}/>
         <Route path = '/developers' element = {<YourDevelopers />} />
         <Route path = '/subscriptions' element = {<Subscription accessToken = {accessToken} setUserId = {setUserId} />} />
         <Route path = '/matches' element = {<Match userId={userId}/>}/>
