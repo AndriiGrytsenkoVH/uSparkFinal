@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "../Styles/Navbar.css"
 
 export default function Navbar(props) {
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to ="/">
-                        uSpark
+                    <Link className="navbar-brand " to ="/">
+                        uSpark🔥
                     </Link>
                     <Link className="nav-link text-light" to="/developers">
-                        Your Developers
+                        Your Developers 
                     </Link>
 
                 
@@ -42,15 +43,14 @@ export default function Navbar(props) {
                             </>
                             ) : (
                             <>
-                            <li className="nav-item">
-                                <Link className ="nav-link active" aria-current="page" to="/login">
+                            <li className="nav-item ">
+                                <Link className ="nav-link" aria-current="page" to="/login">
                                     Login
                                 </Link>
                             </li>
                             </>    
                             )}
                         </ul>
-                        <span className="navbar-text">Logged In User</span> 
                     </div>
                 </div>
             </nav>

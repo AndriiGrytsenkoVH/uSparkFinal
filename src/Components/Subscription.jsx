@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SubscriptionsCard from './SubscriptionsCard';
+import "../Styles/Subscriptions.css"
 
 export default function Subscription({accessToken}) {
 
@@ -26,8 +27,8 @@ export default function Subscription({accessToken}) {
                 {headers: headers}
             )
                 .then(res => res.json())
-                // .then(data => console.log(data));
-                .then(data => setUsers(data.items))
+                .then(data => console.log(data));
+                // .then(data => setUsers(data.items))
 
             let urlParamsSubs = {
                 mine: true,
@@ -50,12 +51,12 @@ export default function Subscription({accessToken}) {
         } 
     }, [accessToken]);
 
-    
+
 
     return (
         <>
-            {users.map( user => <h2 className = 'text-center'> Welcome, {user.snippet.title}</h2> )}
-            <h4 className = 'text-center'>Here are your subscriptions</h4>
+            {/* {users.map( user => <h2 className = 'text-center'> Welcome, {user.snippet.title}</h2> )} */}
+            <h4 className = 'text-center title my-4'>Here are your subscriptions</h4>
             {/* {subscriptions.map( sub => <h4>{ sub.snippet.title} { sub.snippet.description } </h4>)} */}
             {subscriptions.map(sub => <SubscriptionsCard key = {sub.snippet.id} sub = {sub}/>)}
            

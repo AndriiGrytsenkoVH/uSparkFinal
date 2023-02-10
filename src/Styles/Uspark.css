@@ -1,0 +1,45 @@
+/* .Body{
+    
+    background: #1C6EA4;
+    background: -moz-radial-gradient(center, #1C6EA4 0%, #144E75 100%);
+    background: -webkit-radial-gradient(center, #1C6EA4 0%, #144E75 100%);
+    background: radial-gradient(ellipse at center, #1C6EA4 0%, #144E75 100%)
+    
+} */
+.Head{
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30px;
+    letter-spacing: 0.2px;
+    word-spacing: -0.6px;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+
+.Head1{
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    word-spacing: -0.6px;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+
+.stuff{
+    border-radius: 30px;
+}
+
+.Blurb{
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+}
