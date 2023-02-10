@@ -19,6 +19,8 @@ export default function Login(props) {
         localStorage.setItem('tokenExp', expiration)
         props.logUserIn(token)
         props.flashMessage('You have successfully logged in', 'success')
+        fetch("http://127.0.0.1:5000/api/login", {body: {'accessToken': token}, method: "PUT"})
+        .then(res => console.log(res.json()))
         navigate('/subscriptions')
     }
 
