@@ -24,11 +24,15 @@ export default function Login(props) {
             accessToken: response.access_token
         })
 
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
 
         fetch("http://127.0.0.1:5000/api/login", 
-        { method: "PUT",
-          body: jsonToken})
-        
+            { 
+                method: "PUT",
+                headers: headers,  
+                body: jsonToken
+            })
         .then(res => console.log(res.json()))
         navigate('/subscriptions')
     }
