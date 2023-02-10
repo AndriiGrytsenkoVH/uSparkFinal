@@ -28,6 +28,7 @@ def update_user(user_id):
     user.from_dict(data)
     return user.to_dict(), 200
 
+# TODO
 # PUT (update) users subscriptions
 @api.route('/users/<string:user_id>/subs', methods=['PUT'])
 def update_users_subscriptions(user_id):
@@ -52,38 +53,38 @@ def update_users_subscriptions(user_id):
 #  lst_name: --optional,
 #  about_me: -- optional}
 # returns 201 if successful
-@api.route('/users', methods=['POST'])
-def create_user():
-     # Check to see that the request sent a request body that is JSON
-    if not request.is_json:
-        return {'error': 'Your request content-type must be application/json'}, 400
-    # Get the data from the request body
-    data = request.json
-    # Validate the incoming data
-    # XXX may be add more required fields
-    for field in ['id']:
-        if field not in data:
-            # If the field is not in the request body, throw an error saying they are missing that field
-            return {'error': f"{field} must be in request body"}, 400
+# @api.route('/users', methods=['POST'])
+# def create_user():
+#      # Check to see that the request sent a request body that is JSON
+#     if not request.is_json:
+#         return {'error': 'Your request content-type must be application/json'}, 400
+#     # Get the data from the request body
+#     data = request.json
+#     # Validate the incoming data
+#     # XXX may be add more required fields
+#     for field in ['id']:
+#         if field not in data:
+#             # If the field is not in the request body, throw an error saying they are missing that field
+#             return {'error': f"{field} must be in request body"}, 400
     
-    # pull the fields from the request data
-    id = data.get('id')
-    username = data.get('username')
-    first_name = data.get('first_name')
-    last_name =  data.get('last_name')
-    about_me = data.get('about_me')
+#     # pull the fields from the request data
+#     id = data.get('id')
+#     username = data.get('username')
+#     first_name = data.get('first_name')
+#     last_name =  data.get('last_name')
+#     about_me = data.get('about_me')
  
 
-    # Query our user table to see if there are any users with either username or email from form
-    check_user = User.query.filter( User.id == id ).first()
-    # If the query comes back with any results
-    if check_user:
-        # TODO may be a redirect to PUT instead of 400
-        return {'error': 'A user with id already exists.'}, 400
+#     # Query our user table to see if there are any users with either username or email from form
+#     check_user = User.query.filter( User.id == id ).first()
+#     # If the query comes back with any results
+#     if check_user:
+#         # TODO may be a redirect to PUT instead of 400
+#         return {'error': 'A user with id already exists.'}, 400
 
-    # Create a new User instance with data from request
-    new_user = User(id=id, username=username, first_name=first_name, last_name=last_name, about_me=about_me)
-    print('='*50)
-    # Return the new post as a JSON response
-    return new_user.to_dict(), 201
+#     # Create a new User instance with data from request
+#     new_user = User(id=id, username=username, first_name=first_name, last_name=last_name, about_me=about_me)
+#     print('='*50)
+#     # Return the new post as a JSON response
+#     return new_user.to_dict(), 201
 

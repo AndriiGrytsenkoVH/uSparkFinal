@@ -18,6 +18,7 @@ user_subscriptions = db.Table('user_subscriptions',
 class User(db.Model):
     id = db.Column(db.String(64), primary_key=True)
     username = db.Column(db.String(64), index=True)
+    thumbnail = db.Column(db.String(64))
     first_name = db.Column(db.String(64))
     last_name = db.Column(db.String(64))
     about_me = db.Column(db.String(64))
@@ -39,13 +40,14 @@ class User(db.Model):
         return {
             'id': self.id,
             'username': self.username,
+            'thumbnail': self.thumbnail,
             'first_name': self.first_name,
             'last_name': self.last_name,
             'about_me': self.about_me
         }
 
     def from_dict(self, data):
-        for field in ['username', 'first_name', 'last_name', 'about_me']:
+        for field in ['username', 'thumbnail', 'first_name', 'last_name', 'about_me']:
             if field in data:
                 setattr(self, field, data[field])
         db.session.commit()
