@@ -34,6 +34,8 @@ export default function Login(props) {
                 headers: headers,  
                 body: jsonToken
             })
+            .then(res => res.json())
+            .then(data => props.setUserId(data.id))
         navigate('/subscriptions')
     }
 
