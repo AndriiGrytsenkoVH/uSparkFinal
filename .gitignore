@@ -35,3 +35,5 @@ test.py
 
 # When cloning, database will be initialized from scratch
 migrations
+
+/Flask/test_jsons/*
