@@ -1,6 +1,8 @@
 import React from 'react'
 import "../Styles/YourDevelopers.css"
-import andrewpic from '../images/tinywow_MyPhoto_Cut_13515924.jpg'
+// import andrewpic from '../images/tinywow_MyPhoto_Cut_13515924.jpg'
+// TODO clean up before production
+import andrewpic from '../images/MyPhoto_Cut.jpg'
 
 export default function YourDevelopers() {
   return (

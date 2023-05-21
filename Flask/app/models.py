@@ -17,7 +17,7 @@ user_subscriptions = db.Table('user_subscriptions',
 
 class User(db.Model):
     id = db.Column(db.String(64), primary_key=True)
-    username = db.Column(db.String(64), index=True)
+    username = db.Column(db.String(64), index=True, unique=True)
     thumbnail = db.Column(db.String(64))
     first_name = db.Column(db.String(64))
     last_name = db.Column(db.String(64))
@@ -67,12 +67,14 @@ class Subscription(db.Model):
     def __repr__(self):
         return '<Subscription {}>'.format(self.chanel_name)
     
-    def to_dict(self):
-        return {
-            'id': self.id,
+    def to_dict(self,  include_id=False):
+        result = {
             'chanel_name': self.chanel_name,
             'thumbnail': self.thumbnail
         }
+        if include_id:
+            result["id"] = self.id
+        return result
     
     def from_dict(self, data):
         for field in ['chanel_name', 'thumbnail']:

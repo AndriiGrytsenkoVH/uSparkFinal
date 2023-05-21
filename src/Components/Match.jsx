@@ -3,13 +3,13 @@ import MatchCard from './MatchCard'
 
 export default function Match(props) {
 
-    const [scoresandusernames, setScoresandusernames] = useState([])
+    const [scoresAndUsernames, setScoresAndUsernames] = useState([])
 
     useEffect(() => {
         fetch(`http://localhost:5000/api/match/${props.userId}/scores`)
         .then(res => res.json())
-        .then(data => setScoresandusernames(data))
-        console.log(scoresandusernames)
+        .then(data => setScoresAndUsernames(data))
+        console.log(scoresAndUsernames)
     }, [])
 
     // useEffect(() => {
@@ -21,7 +21,7 @@ export default function Match(props) {
     <>
     <h1 className = 'title text-center mt-5'>Your Matches Below</h1>
     <div className = 'container-fluid'>
-      {scoresandusernames.map((item, index) => <MatchCard key = {index} score = {item.score} username = {item.user.username}/>)}
+      {scoresAndUsernames.map((item, index) => <MatchCard key = {index} score = {item.score} username = {item.user.username}/>)}
     </div>
     </>
     )

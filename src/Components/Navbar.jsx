@@ -5,12 +5,12 @@ import "../Styles/Navbar.css"
 export default function Navbar(props) {
     return (
         <>
-            <nav className="navbar navbar-expand-lg">
+            <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
                 <div className="container-fluid">
                     <Link className="navbar-brand " to ="/">
                         uSpark🔥
                     </Link>
-                    <Link className="nav-link text-light" to="/developers">
+                    <Link className="nav-link" to="/developers">
                         Your Developers 
                     </Link>
 
