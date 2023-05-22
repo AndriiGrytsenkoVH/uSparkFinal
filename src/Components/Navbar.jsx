@@ -13,7 +13,6 @@ export default function Navbar(props) {
                     <Link className="nav-link text-light" to="/developers">
                         Your Developers 
                     </Link>
-
                 
                     <button
                         className="navbar-toggler"

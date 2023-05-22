@@ -51,8 +51,6 @@ export default function Subscription({accessToken, setUserId}) {
         } 
     }, [accessToken]);
 
-
-
     return (
         <>
         

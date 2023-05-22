@@ -6,13 +6,13 @@ import "../Styles/Login.css"
 
 export default function Login(props) {
 
-    const client = useRef(null);
-    
-   
     const navigate = useNavigate()
 
+    // google client for user authentication
+    const client = useRef(null);
+     
     function handleResponseCallback(response){
-        console.log(response);
+        // console.log(response);
         let token = response.access_token;
         let expiration = response.expires_in
 
@@ -22,7 +22,7 @@ export default function Login(props) {
         props.flashMessage('You have successfully logged in', 'success')
         
         let jsonToken = JSON.stringify({
-            accessToken: response.access_token
+            accessToken: token
         })
 
         let headers = new Headers();
@@ -34,12 +34,18 @@ export default function Login(props) {
                 headers: headers,  
                 body: jsonToken
             })
-            .then(res => res.json())
-            .then(data => props.setUserId(data.id))
+        .then(res => res.json())
+        .then(data => props.setUserId(data.id))
+
         navigate('/subscriptions')
     }
 
+    // useEffect is called only once since [] is specified in the end
+    // it will be called again when something in [] changes
+    // which is never, because [] is empty
     useEffect(() => {
+        // this comment is needed to let React know that google object exists
+        // it was added via a script in index.html
         /* global google */
         client.current = google.accounts.oauth2.initTokenClient({
             client_id: client_id,
@@ -48,12 +54,9 @@ export default function Login(props) {
         });
     }, []);
 
-   
     function getToken(){
         client.current.requestAccessToken()
     };
-
-
 
     return (
         <>
@@ -61,7 +64,6 @@ export default function Login(props) {
             <div className="App my-5">
                 <button className="d-block mx-auto btn btn-primary magic" onClick={getToken}>click me!</button>
             </div>
-
         </>
     );
 }
