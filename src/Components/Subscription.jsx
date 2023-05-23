@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SubscriptionsCard from './SubscriptionsCard';
-import "../Styles/Subscriptions.css"
+// import "../Styles/Subscriptions.css"
 
 export default function Subscription({accessToken, setUserId}) {
 
@@ -53,12 +53,12 @@ export default function Subscription({accessToken, setUserId}) {
 
     return (
         <>
-        
+            {/* TODO users are not defined properly? */}
             {users.map( user => <h2 className = 'text-center title my-3'> Welcome, {user.snippet.title}</h2> )}
             <h4 className = 'text-center title my-4'>Here are your subscriptions</h4>
-            {/* {subscriptions.map( sub => <h4>{ sub.snippet.title} { sub.snippet.description } </h4>)} */}
-            {subscriptions.map(sub => <SubscriptionsCard key = {sub.snippet.id} sub = {sub}/>)}
-           
+            <div className="container-fluid">
+                {subscriptions.map(sub => <SubscriptionsCard key = {sub.snippet.id} sub = {sub}/>)}
+            </div>
         </>
     )
 }

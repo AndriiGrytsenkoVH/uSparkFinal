@@ -6,7 +6,7 @@ export default function SubscriptionsCard({ sub }) {
 
 	return (
 		<>
-			<div className="card d-inline-flex ">
+			<div className="card d-inline-flex mx-auto">
 				<div className="card-body">
 					<h5 className="card-title">{ sub.snippet.title }</h5>
 					<p className="card-text">{ sub.snippet.description }</p>

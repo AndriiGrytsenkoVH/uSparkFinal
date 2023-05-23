@@ -1,7 +1,7 @@
 body{
- background: linear-gradient(to right, rgb(177, 18, 18), rgb(94, 9, 94), black);
-  background-size: 400% 400%;
-  animation: gradient 30s ease infinite;
+	background: linear-gradient(to right, rgb(177, 18, 18), rgb(94, 9, 94), black);
+	background-size: 400% 400%;
+	animation: gradient 30s ease infinite;
 }
 
 @keyframes gradient {

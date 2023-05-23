@@ -1,18 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "../Styles/Navbar.css"
 
 export default function Navbar(props) {
     return (
         <>
-            <nav className="navbar navbar-expand-lg">
+            <nav className="navbar navbar-expand-lg bg-black" data-bs-theme="dark">
                 <div className="container-fluid">
                     <Link className="navbar-brand " to ="/">
                         uSpark🔥
                     </Link>
-                    <Link className="nav-link text-light" to="/developers">
-                        Your Developers 
-                    </Link>
+                    
                 
                     <button
                         className="navbar-toggler"
@@ -27,6 +24,11 @@ export default function Navbar(props) {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+							<li className="nav-item">
+								<Link className="nav-link active" to="/developers">
+									Your Developers 
+								</Link>
+                            </li>
                         {props.loggedIn ? (
                             <>
                             <li className="nav-item">
@@ -35,7 +37,7 @@ export default function Navbar(props) {
                                 </Link>
                             </li>
                             <li className = "nav-item">
-                                <Link className = "nav-link" to="/matches">
+                                <Link className="nav-link" to="/matches">
                                     Scores
                                 </Link>
                             </li>

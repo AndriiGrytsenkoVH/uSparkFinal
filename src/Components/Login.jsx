@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect, useRef, useState } from "react";
 import { client_id } from '../Secret/secret'
 import { useNavigate } from 'react-router-dom';
-import "../Styles/Login.css"
 
 export default function Login(props) {
 
@@ -59,11 +58,19 @@ export default function Login(props) {
     };
 
     return (
-        <>
-            <h1 className = 'text-center mt-5 title'>Make it Happen</h1>
-            <div className="App my-5">
-                <button className="d-block mx-auto btn btn-primary magic" onClick={getToken}>click me!</button>
+        <div className='container-sm'>
+            <div className="row">
+                <div className="column col-4"></div>
+                <div className="column col-4">
+                    <h1 className = 'text-center my-3 text-light'>Make it Happen</h1>
+                    <button className="d-block my-3 mx-auto btn btn-primary btn-lg" onClick={getToken}>Authenticate with <u>Google</u></button>
+                    <p className='text-center my-3 fs-5 text-light'>
+                        ⚠ By Authenticating with Google you give uSpark permission 
+                        to store the list of your YouTube subscriptions.
+                    </p>
+                </div>
+                <div className="column col-4"></div>
             </div>
-        </>
+        </div>
     );
 }
