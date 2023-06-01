@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import SubscriptionsCard from './SubscriptionsCard';
-// import "../Styles/Subscriptions.css"
 
 export default function Subscription({accessToken, setUserId}) {
 
@@ -9,6 +8,7 @@ export default function Subscription({accessToken, setUserId}) {
     const [ users, setUsers ] = useState([])
 
     useEffect(() => {
+        // TODO! all this fetching should be done on the backed
         if (accessToken){
             let headers = new Headers();
             headers.append('Authorization', `Bearer ${accessToken}`);
@@ -52,13 +52,13 @@ export default function Subscription({accessToken, setUserId}) {
     }, [accessToken]);
 
     return (
-        <>
+        <div className="container text-light">
             {/* TODO users are not defined properly? */}
-            {users.map( user => <h2 className = 'text-center title my-3'> Welcome, {user.snippet.title}</h2> )}
-            <h4 className = 'text-center title my-4'>Here are your subscriptions</h4>
-            <div className="container-fluid">
-                {subscriptions.map(sub => <SubscriptionsCard key = {sub.snippet.id} sub = {sub}/>)}
+            {users.map( user => <h2 className = 'text-center my-1'>Welcome, {user.snippet.title}</h2> )}
+            <h2 className = 'text-center my-4'>Here are your subscriptions</h2>
+            <div className="d-flex justify-content-around flex-wrap">
+                {subscriptions.map(sub => <SubscriptionsCard key={sub.snippet.id} sub={sub}/>)}
             </div>
-        </>
+        </div>
     )
 }

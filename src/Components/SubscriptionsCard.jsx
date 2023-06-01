@@ -1,18 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "../Styles/SubscriptionsCard.css"
-
 export default function SubscriptionsCard({ sub }) {
 
 	return (
-		<>
-			<div className="card d-inline-flex mx-auto">
-				<div className="card-body">
-					<h5 className="card-title">{ sub.snippet.title }</h5>
-					<p className="card-text">{ sub.snippet.description }</p>
-					<Link className='btn btn-info' to = {`https://www.youtube.com/channel/${sub.snippet.resourceId.channelId}`}>View Channel</Link>
-				</div>
+		<div className="card bg-transparent border-3 border-light m-1 text-center d-inline-flex w-25">
+			{/* TODO add thumbnail */}
+			<div className="card-body">
+				<h3 className="card-title text-decoration-underline">{ sub.snippet.title }</h3>
+				{/* <p className="card-text vh-50">{ sub.snippet.description }</p> */}
+				<Link className='btn btn-info' to = {`https://www.youtube.com/channel/${sub.snippet.resourceId.channelId}`}>View Channel</Link>
 			</div>
-		</>
+		</div>
 	)
 }
