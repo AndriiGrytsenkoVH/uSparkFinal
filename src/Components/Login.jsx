@@ -11,12 +11,17 @@ export default function Login(props) {
     const client = useRef(null);
      
     function handleResponseCallback(response){
-        // console.log(response);
+        if (!(response && response.accessToken)){
+            return
+        }
+
+        console.log(response);
+        
         let token = response.access_token;
-        let expiration = response.expires_in
+        // let expiration = response.expires_in
 
         localStorage.setItem('token', token)
-        localStorage.setItem('tokenExp', expiration)
+        // localStorage.setItem('tokenExp', expiration)
         props.logUserIn(token)
         props.flashMessage('You have successfully logged in', 'success')
         

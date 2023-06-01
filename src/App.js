@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import AlertMessage from './Components/AlertMessage';
 import Navbar from './Components/Navbar';
 import Uspark from './Components/Uspark';
@@ -12,12 +12,12 @@ function App(props) {
 	const [message, setMessage] = useState(null);
 	const [category, setCategory] = useState(null);
 	const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') && (localStorage.getItem('tokenExp') !== ''));
-	const [ accessToken, setAccessToken ] = useState(localStorage.getItem('token'));
-	const [ userId, setUserId ] = useState()
+	const [accessToken, setAccessToken] = useState(localStorage.getItem('token'));
+	const [userId, setUserId] = useState()
 
 	function flashMessage(message, category){
 		setMessage(message);
-		setCategory(category);
+		setCategory(category)
 	}
 
 	function logUserIn(token){
@@ -29,7 +29,7 @@ function App(props) {
 		setLoggedIn(false);
 		localStorage.removeItem('token');
 		localStorage.removeItem('tokenExp');
-		flashMessage("You have logged out", "primary");
+		flashMessage("You have logged out", "primary")
 	}
 
 	return (
